@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lim Flexi Repair - Intro</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 1;
+        transition: opacity 1s ease-in-out; /* Added transition for opacity */
+    }
+
+    .logo {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        animation: fadeIn 3s ease-out forwards;
+    }
+
+    .tagline {
+        font-size: 1.5rem;
+        margin-top: 20px;
+        opacity: 0;
+        animation: fadeIn 3s ease-out forwards 1s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 50px;
+        height: 50px;
+        margin: 40px auto; /* Centering the loading spinner */
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Hide the container when transitioning to the home page */
+    .hidden {
+        opacity: 0;
+    }
+</style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="logo">Lim Flexi Repair</div>
+        <div class="tagline">Your Tech Solutions Partner</div>
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script>
+        // Redirect to home page after animation finishes
+        setTimeout(function() {
+            // Fade out the loading screen
+            var container = document.getElementById('container');
+            container.style.opacity = 0;
+            // Redirect to home page after fade out
+            setTimeout(function() {
+                // Add 'loaded' class to body to trigger fade-in effect on home page
+                document.body.classList.add('loaded');
+                // Redirect to home page
+                window.location.href = 'home.html';
+            }, 1000); // Adjust the time (in milliseconds) as needed
+        }, 5000); // Adjust the time (in milliseconds) as needed
+    </script>
+</body>
+</html>

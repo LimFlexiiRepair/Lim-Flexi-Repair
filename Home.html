@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lim Flexi Repair</title>
+  <style>
+      .content_all {
+        padding: 0;
+        margin-top: 50px;
+        border-radius: 15px;
+        background-color: #424242;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        opacity: 0; /* Initially set opacity to 0 */
+        transition: opacity 1s ease-in-out; /* Added transition for opacity */
+    }
+    .banner {
+  background-color: #03DAC5;
+  padding: 10px 0;
+}
+
+.banner-text {
+  font-size: 18px;
+  color: #121212;
+  text-align: center;
+}
+
+.banner-text marquee {
+  font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
+}
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #03DAC5;
+    }
+
+    .topbar {
+      background-color: #212121;
+      color: #03DAC5;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin-top: 40px;
+      transition: top 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #03DAC5;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .topbar-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 40px;
+      margin-right: 10px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    .text1 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .button {
+      padding: 8px 20px;
+      background-color: #03DAC5;
+      border: 2px solid #03DAC5;
+      color: #121212;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:hover {
+      background-color: #02C39A;
+      color: #fff;
+    }
+
+    .content {
+      padding: 0;
+      margin-top: 50px;
+      border-radius: 15px;
+      background-color: #424242;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden; /* Ensure the images overflow correctly */
+    }
+
+    .gallery {
+      width: 100%; /* Make the gallery take up the full width */
+      white-space: nowrap; /* Ensure the images are in a single line */
+      position: relative;
+    }
+
+    .gallery img {
+      width: 100%; /* Make the images fill the entire width of the screen */
+      display: inline-block;
+    }
+
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1; /* Ensure the buttons are above the images */
+    }
+
+    .gallery-nav button {
+      background: rgba(0, 0, 0, 0.5); /* Translucent circle */
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%; /* Rounded button */
+    }
+
+    .gallery-nav button:hover {
+      background-color: rgba(0, 0, 0, 0.7); /* Darker translucent circle on hover */
+    }
+
+    .prev {
+      margin-left: 20px; /* Adjust distance from left edge */
+    }
+
+    .next {
+      margin-right: 20px; /* Adjust distance from right edge */
+    }
+
+    h1, p {
+      color: #03DAC5;
+    }
+
+    @media screen and (max-width: 600px) {
+      .topbar {
+        padding: 8px 16px;
+      }
+
+      .content {
+        padding: 10px;
+        margin-top: 40px;
+      }
+
+      .button {
+        font-size: 12px;
+        padding: 8px 16px;
+        margin: 4px 2px;
+      }
+
+      .logo {
+        width: 30px;
+      }
+
+      .text1 {
+        font-size: 16px;
+      }
+
+      .content img {
+        width: 100%;
+        height: auto;
+      }
+
+      .content p {
+        font-size: 16px;
+      }
+
+      .topbar {
+        display: none; /* Hide the topbar on smaller screens */
+      }
+    }
+
+    /* New styles for dropdown menu */
+    .dropdown {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #121212;
+      padding: 10px;
+      width: 150px; /* Adjust width as needed */
+      display: none;
+      z-index: 999;
+    }
+
+    .dropdown-button {
+      background-color: #03DAC5;
+      color: #121212;
+      border: none;
+      text-align: left;
+      padding: 8px 10px;
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+
+    .dropdown-button:hover {
+      background-color: #02C39A;
+      color: #fff;
+    }
+   
+    .background-text {
+      background-image: url('WhatsApp Image 2024-04-20 at 20.41.04_58fc20cc.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 50px; /* Adjust padding as needed */
+      text-align: center;
+      color: #000000; /* Text color */
+}
+
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="banner-text">
+      <marquee behavior="scroll" direction="left" scrollamount="15">Grand Opening! 15% off for 2 Months</marquee>
+    </div>
+  </div>
+  <div class="content_all">
+  
+    
+    <div class="topbar" id="topbar">
+      <div class="topbar-content">
+        <a href="Home.html"><img class="logo" src="WhatsApp Image 2024-04-20 at 20.41.04_58fc20cc-modified.png" alt="Logo"></a>
+        <span class="text1">Lim Flexi Repair</span>
+      </div>
+     <div>
+        <a href="Mail_repair.html"><button class="button" style="margin-left: -15%;">Mail in repair</button></a>
+        <a href="Pricing.html"><button class="button">Pricing</button></a>
+        <a href="contact.html"><button class="button">Contact</button></a>
+        <a href="FAQ.html"><button class="button">FAQ</button></a>
+      
+      </div>
+    </div>
+  
+    <div class="dropdown" id="dropdown">
+      <button class="dropdown-button" onclick="toggleDropdown()">Menu</button>
+      <a href="Mail_repair.html"><button class="button">Mail in repair</button></a>
+      <a href="Pricing.html"><button class="button">Pricing</button></a>
+      <a href="contact.html"><button class="button">Contact</button></a>
+      <a href="FAQ.html"><button class="button">FAQ</button></a>
+
+    </div>
+  
+    <div class="content">
+      <div class="background-text">
+        <h1>Lim Flexi Repair</h1>
+        <p><b>Flexible Repairs, Done Cheap</b></p>
+        <p>At Lim Flexi Repair, we specialize in repairing laptops and PCs of all brands and models. Whether it's a hardware issue, software problem, or simply a performance optimization you need, our experienced technicians are here to help. With quick turnaround times and competitive pricing, we ensure that your devices are back up and running smoothly in no time.</p>
+     
+     </div>
+       <div class="gallery">
+        <img src="Designer (1).jpeg" class="designer-img">
+        <img src="Designer (2).jpeg" class="designer-img">
+        <img src="Designer (3).jpeg" class="designer-img">
+        <img src="Designer.jpeg" class="designer-img">
+        <div class="gallery-nav">
+         <button class="prev" onclick="prevImage()">❮</button>
+          <button class="next" onclick="nextImage()">❯</button>
+        </div>
+      </div>
+     <a href="Mail_repair.html"><button class="button" style="margin-left: 44.5%; margin-right: 50%; padding: 5px; width: 200px; height: 70px;">Mail In Repairs</button></a>
+      <p style="text-align: center;">Contact</p>
+      <p style="text-align: center;">Email: Lim3dp@gmail.com</p>
+      <p style="text-align: center;">Copyright Lim Flexi Repair © 2024 All rights Reserved Singapore, Singapore</p>
+    </div>
+  </div>
+ 
+<script>
+  // Wait for the page to load
+  window.onload = function() {
+      // Select the content element
+      var content = document.querySelector('.content_all');
+
+      // Gradually change opacity to 1 for fade-in effect
+      content.style.opacity = 1;
+  };
+</script>
+
+<script>
+  function toggleDropdown() {
+    var dropdown = document.getElementById("dropdown");
+    if (dropdown.style.display === "block") {
+      dropdown.style.display = "none";
+    } else {
+      dropdown.style.display = "block";
+    }
+  }
+
+  let prevScrollPos = window.pageYOffset;
+  const topbar = document.getElementById('topbar');
+
+  window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollPos > currentScrollPos) {
+      topbar.style.top = "0";
+    } else {
+      topbar.style.top = "-50px"; // Adjust this value based on the height of your topbar
+    }
+    prevScrollPos = currentScrollPos;
+  };
+
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.designer-img');
+  
+  function showImage(index) {
+    images.forEach((img, i) => {
+      if (i === index) {
+        img.style.display = 'block';
+      } else {
+        img.style.display = 'none';
+      }
+    });
+  }
+  
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+  
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }
+  
+  function autoScroll() {
+    nextImage();
+  }
+  
+  setInterval(autoScroll, 6000);
+  
+  showImage(currentIndex);
+</script>
+
+</body>
+</html>
