@@ -354,8 +354,8 @@
         emailjs.init("JTOO7rGT5xnRPLiww"); // Replace with your EmailJS user ID
     })();
 </script>
-<script>
- var submitted = false; // Flag to track form submission
+  <script>
+    var submitted = false; // Flag to track form submission
 
     document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the form from submitting via HTML
@@ -374,9 +374,9 @@
 
         // Send email with form values
         var templateParams = {
-            from_email: email,
             from_name: name,
-            message: message
+            from_email: email,
+            message_html: message
         };
 
         emailjs.send('service_u3raz4k', 'template_7ikork8', templateParams, 'JTOO7rGT5xnRPLiww')
@@ -392,10 +392,7 @@
             });
 
         this.reset(); // Reset the form after submission
-
-
-
-
+    });
 </script>
 
 <script>
