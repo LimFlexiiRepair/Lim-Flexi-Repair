@@ -355,31 +355,43 @@
     })();
 </script>
 <script>
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting via HTML
-    
-    // Get the values entered by the user
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var message = document.getElementById('message').value;
+ var submitted = false; // Flag to track form submission
 
-    // Send email with form values
-    var templateParams = {
-        from_email: email,
-        from_name: name,
-        message: message
-    };
-    console.log(templateParams)
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting via HTML
 
-    emailjs.send('service_u3raz4k', 'template_7ikork8', templateParams, 'JTOO7rGT5xnRPLiww')
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-        }, function(error) {
-            console.log('FAILED...', error);
-        });
+        if (submitted) {
+            alert("You have already submitted the form. Please wait for confirmation.");
+            return;
+        }
 
-    this.reset(); // Reset the form after submission
-});
+        // Implement CAPTCHA validation here if needed
+
+        // Get the values entered by the user
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var message = document.getElementById('message').value;
+
+        // Send email with form values
+        var templateParams = {
+            from_email: email,
+            from_name: name,
+            message: message
+        };
+
+        emailjs.send('service_u3raz4k', 'template_7ikork8', templateParams, 'JTOO7rGT5xnRPLiww')
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                // Show confirmation message
+                alert("Thank you for contacting us! We'll get back to you soon.");
+                submitted = true; // Mark form as submitted
+            }, function(error) {
+                console.log('FAILED...', error);
+                // Show error message if submission fails
+                alert("Failed to submit the form. Please try again later.");
+            });
+
+        this.reset(); // Reset the form after submission
 
 
 
